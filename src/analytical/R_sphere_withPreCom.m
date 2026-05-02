@@ -1,7 +1,21 @@
 function [R] = R_sphere_withPreCom(mu, preCom, NVA)
+% R_sphere_withPreCom Calculate frequency-domain reflectance in spherical geometry.
+%
 % [R] = R_sphere_withPreCom(mu, preCom, NVA)
-% Angelo Sassaroli Ph.D. Fall 2023
-% Giles Blaney Ph.D. Fall 2023
+%
+% Written by Angelo Sassaroli Ph.D. Fall 2023
+% Written by Giles Blaney, Ph.D. Fall 2023
+%
+% Inputs:
+%   mu     - Optical properties (mua, musp) [1/mm]
+%   preCom - Precomputed values from get_Rshpere_preCom [struct]
+%   NVA    - Name-Value Arguments:
+%     fmod   - Modulation frequency [Hz]
+%     ni     - Internal refractive index [unitless]
+%     no     - External refractive index [unitless]
+%
+% Outputs:
+%   R - Complex reflectance [1/mm^2]
 
 %calculation of the FD solution of DE in spherical geometry. AS October
 %2023. For the geometry see A.Sassaroli et al. Appl. Opt. 40, 185-197 (2001).

@@ -1,18 +1,18 @@
 function [tkMom] = temporalKthMoment(rs, rd, k, optProp)
-% Giles Blaney Ph.D. Spring 2023
-% [R] = temporalReflectance(rs, rd, tns, optProp)
+% temporalKthMoment Calculate the k-th temporal moment of the TPSF.
+%
+% [tkMom] = temporalKthMoment(rs, rd, k, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   k       - (OPTIONAL; default=1)Moment order.
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   k       - Moment order [unitless]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   tkMom     - kth Momment of t; <t^k>. (ps^k)
+%   tkMom - k-th moment of t [ps^k]
     
     arguments
         rs (:,3) double; %mm

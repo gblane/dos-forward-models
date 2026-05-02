@@ -1,25 +1,21 @@
 function [l] = temporalGatePartPathLen(rs, r, rd, Vol, tg, optProp, NVA)
-% Giles Blaney Ph.D. Spring 2023
-% [l] = temporalGatePartPathLen(rs, rd, Vol, tg, optProp, NVA)
+% temporalGatePartPathLen Calculate partial pathlength for a temporal gate.
+%
+% [l] = temporalGatePartPathLen(rs, r, rd, Vol, tg, optProp, NVA)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector coordinates. (mm)
-%   Vol     - Volume. (mm^3)
-%   tg      - Gate start and end time. (ps)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
-%   Name Value Arguments:
-%           - 'conv_t' (default=10e3 ps): Time window for convolution. (ps)
-%           - 'conv_dt' (default=1 ps): Time step for convolution. (ps)
-%           - 'usePar' (default=true): Use parfoor loops.
-%           - 'FFTconv' (default=true): Use ifft(fft*fft) as conv.
+%   rs      - Source coordinates [mm]
+%   r       - Center coordinate of volume [mm]
+%   rd      - Detector coordinates [mm]
+%   Vol     - Volume [mm^3]
+%   tg      - Gate start and end time [ps]
+%   optProp - Struct of optical properties [struct]
+%   NVA     - Name-Value Arguments [struct]
+%
 % Outputs:
-%   l       - Partial pathlength of gated t. (mm)
+%   l - Partial pathlength of gated time [mm]
     
     arguments
         rs (1,3) double; %mm

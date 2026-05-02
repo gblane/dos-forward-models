@@ -1,28 +1,22 @@
 function [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
-% Giles Blaney Spring 2020
+% complexTotPathLen2L Calculate complex total pathlength in a two-layer medium.
+%
 % [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
+%
+% Written by Giles Blaney, Ph.D. Spring 2020
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   thk     - Layer thickness. (mm)
-%   en      - (OPTIONAL) Bessel function roots.
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=[1.4, 1.4]) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=[1.20, 0.25] 1/mm) Reduced scattering.
-%                       (1/mm)
-%                mua  - (default=[0.008, 0.020] 1/mm) Absorption. (1/mm)
-%   opts    - (OPTIONAL) Options structure with the following feilds:
-%               fmod   - (default=1.40625 Hz) Modulation frequency {Hz}
-%               h_end  - (default=2000) Number of Bessel function zeros
-%               B      - (default=150 mm) Radius of cylindrical boundary {mm}
-%               Method - (defualt = 'CompFluence') Type of method to use to
-%               find complex reflectnace in the two layer 
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   thk     - Layer thickness [mm]
+%   en      - Bessel function roots [unitless]
+%   optProp - Struct of optical properties [struct]
+%   opts    - Options structure [struct]
+%
 % Outputs:
-%   L       - Complex total pathlength. (mm)
-%   Ll      - Complex pathlength for each layer. (mm).
-%   PHI     - Complex fluence. (1/mm^2)
+%   L   - Complex total pathlength [mm]
+%   Ll  - Complex pathlength for each layer [mm]
+%   PHI - Complex fluence [1/mm^2]
 
     if nargin<=3
         load('zeroOrdBesselRoots.mat');

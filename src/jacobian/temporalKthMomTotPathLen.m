@@ -1,18 +1,18 @@
 function [L] = temporalKthMomTotPathLen(rs, rd, k, optProp)
-% Giles Blaney Ph.D. Spring 2023
+% temporalKthMomTotPathLen Calculate total pathlength of the k-th temporal moment.
+%
 % [L] = temporalKthMomTotPathLen(rs, rd, k, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   k       - (OPTIONAL; default=1)Moment order.
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   k       - Moment order [unitless]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   L       - Total pathlength of kth momment of t. (mm)
+%   L - Total pathlength of k-th moment of t [mm]
     
     arguments
         rs (:,3) double; %mm

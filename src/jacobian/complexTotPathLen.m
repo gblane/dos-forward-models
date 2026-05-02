@@ -1,21 +1,19 @@
 function [L, R] = complexTotPathLen(rs, rd, omega, optProp)
-% Giles Blaney Spring 2019
-% Updated Giles Blaney Ph.D. Spring 2023
+% complexTotPathLen Calculate complex total pathlength and reflectance.
+%
 % [L, R] = complexTotPathLen(rs, rd, omega, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   omega   - (OPTIONAL, default=2*pi*1.40625e8 rad/sec) Angular modulation
-%             frequency. (rad/sec)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   omega   - Angular modulation frequency [rad/sec]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   L       - Complex total pathlength. (mm)
-%   R       - Complex reflectance. (1/mm^2)
+%   L - Complex total pathlength [mm]
+%   R - Complex reflectance [1/mm^2]
 
     arguments
         rs (:,3) double;

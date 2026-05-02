@@ -1,5 +1,19 @@
 function [SD, SS, DS, params] = simMeasFromSenMap(simParams, senMapParams)
-% Giles Blaney Fall 2019
+% simMeasFromSenMap Simulate measurements using sensitivity maps.
+%
+% [SD, SS, DS, params] = simMeasFromSenMap(simParams, senMapParams)
+%
+% Written by Giles Blaney, Ph.D. Fall 2019
+%
+% Inputs:
+%   simParams    - Simulation parameters [struct]
+%   senMapParams - Sensitivity map parameters [struct]
+%
+% Outputs:
+%   SD     - Single distance measurement structure [struct]
+%   SS     - Single slope measurement structure [struct]
+%   DS     - Dual slope measurement structure [struct]
+%   params - Parameters structure [struct]
 
     %% Unpackage Input
     if nargin<=0

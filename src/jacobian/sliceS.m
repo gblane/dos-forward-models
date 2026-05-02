@@ -1,8 +1,19 @@
 function [Splane, plotParams] = sliceS(S, params, slAxis, slValue)
-% Giles Blaney Ph.D. Spring 2023
+% sliceS Slice a 3D sensitivity array for 2D plotting.
+%
 % [Splane, plotParams] = sliceS(S, params, slAxis, slValue)
 %
-% Slice a 3D S array for 2D plotting
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
+% Inputs:
+%   S       - 3D sensitivity array [unitless]
+%   params  - Parameters structure containing axis vectors [struct]
+%   slAxis  - Axis to slice along ('x', 'y', or 'z') [string]
+%   slValue - Value along the slice axis [mm]
+%
+% Outputs:
+%   Splane     - 2D sliced sensitivity array [unitless]
+%   plotParams - Plotting parameters and axis vectors [struct]
 
     slAxis=lower(slAxis);
     [~, ind]=min(abs(params.(slAxis)-slValue));

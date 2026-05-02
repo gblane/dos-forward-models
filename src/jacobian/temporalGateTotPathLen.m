@@ -1,23 +1,19 @@
 function [L] = temporalGateTotPathLen(rs, rd, tg, optProp, NVA)
-% Giles Blaney Ph.D. Spring 2023
-% [L] = temporalGateTotPathLen(rs, rd, tg, optProp)
+% temporalGateTotPathLen Calculate total pathlength for a temporal gate.
+%
+% [L] = temporalGateTotPathLen(rs, rd, tg, optProp, NVA)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   tg      - Gate start and end time. (ps)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
-%   Name Value Arguments:
-%           - 'conv_t' (default=10e3 ps): Time window for convolution. (ps)
-%           - 'conv_dt' (default=1 ps): Time step for convolution. (ps)
-%           - 'simTyp' (default='DT'): String to switch between 'DT' and
-%               'MC' simulation type
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   tg      - Gate start and end time [ps]
+%   optProp - Struct of optical properties [struct]
+%   NVA     - Name-Value Arguments [struct]
+%
 % Outputs:
-%   L       - Total pathlength of gated t. (mm)
+%   L - Total pathlength of gated time [mm]
     
     arguments
         rs (:,3) double; %mm

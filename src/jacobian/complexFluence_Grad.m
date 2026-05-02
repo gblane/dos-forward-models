@@ -1,19 +1,18 @@
 function [PHI_Grad] = complexFluence_Grad(rs, rd, omega, optProp)
-% Giles Blaney Winter 2020
+% complexFluence_Grad Calculate the gradient of the complex fluence.
+%
 % [PHI_Grad] = complexFluence_Grad(rs, rd, omega, optProp)
+%
+% Written by Giles Blaney, Ph.D. Winter 2020
+%
 % Inputs:
-%   rs       - Source coordinates. (mm)
-%   rd       - Detector coordinates. (mm)
-%   omega    - (OPTIONAL, default=2*pi*1.40625e8 rad/sec) Angular modulation
-%              frequency. (rad/sec)
-%   optProp  - (OPTIONAL) Struct of optical properties with the following
-%              fields:
-%                 nin  - (default=1.4) Index of refraction inside. (-)
-%                 nout - (default=1) Index of refraction outside. (-)
-%                 musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                 mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   omega   - Angular modulation frequency [rad/sec]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   PHI_Grad - Complex fluence gradient. (1/mm^2)
+%   PHI_Grad - Complex fluence gradient [1/mm^3]
 
     if nargin<=2
         fmod=1.40625e8; %Hz

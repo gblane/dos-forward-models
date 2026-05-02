@@ -1,18 +1,18 @@
 function [PHI] = temporalFluence(rs, rd, t, optProp)
-% Giles Blaney Ph.D. Spring 2023
-% [PHI] = temporalFluence(rs, rd, tns, optProp)
+% temporalFluence Calculate the temporal fluence in a semi-infinite medium.
+%
+% [PHI] = temporalFluence(rs, rd, t, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   t       - Time. (ps)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   t       - Time [ps]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   PHI     - Temporal fluence. (1/(ps mm^2))
+%   PHI - Temporal fluence [1/(ps*mm^2)]
     
     arguments
         rs (:,3) double; %mm

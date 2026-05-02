@@ -1,47 +1,20 @@
 function [adjoint, params, MCXout] = myMCXLAB_adjoint(rs, rd, optProp, NVA)
+% myMCXLAB_adjoint Run Monte Carlo simulations using MCXLAB with adjoint source.
+%
 % [adjoint, params, MCXout] = myMCXLAB_adjoint(rs, rd, optProp, NVA)
-% 
-% Giles Blaney Ph.D. Summer 2023
-% 
+%
+% Written by Giles Blaney, Ph.D. Summer 2023
+%
 % Inputs:
-%   rs       - Pencil beam source coordinates [x, y, z]. (mm)
-%   rd       - Detector coordinates in [x, y, z]. (mm)
-%   optProp  - (OPTIONAL) Struct of optical properties with the following
-%                fields:
-%                    nin  - (default=1.333) Index of refraction inside. (-)
-%                    nout - (default=1) Index of refraction outside. (-)
-%                    musp - (default=1.1 1/mm) Reduced scattering. (1/mm)
-%                    g    - (default=0.9) anisotropy. (-)
-%                    mua  - (default=0.011 1/mm) Absorption. (1/mm)
-% 
-% Name Value Arguments:
-%   'np'     - (default=1e8) Number of photons.
-%   'dr'     - (default=1 mm) Voxel side length. (mm)
-%   'xl'     - (default=[-15.5, 15.5] mm) Limits in the x direction in 
-%               [min, max]. (mm)
-%   'yl'     - (default=[-15.5, 15.5] mm) Limits in the y direction in
-%               [min, max]. (mm)
-%   'zl'     - (default=[0, 30] mm) Limits in the y direction in 
-%               [min, max]. (mm)
-%   'ndt'    - (default=1e3) Number of time bins.
-%   'tend'   - (default=5e3 ps) Max time bin edge. (ps) 
-%   'detNA'  - (default=0.5) Detector NA.
-% 
+%   rs      - Pencil beam source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   optProp - Struct of optical properties [struct]
+%   NVA     - Name-Value Arguments [struct]
+%
 % Outputs:
-%   adjoint  - Struct with the following fields:
-%               PHIsd   - The fluence from the source to the voxel at the
-%                           detector. (1/(ps mm^2))
-%               PHIsi   - The fluence from the source to each voxel.
-%                           (1/(ps mm^2))
-%               PHIdi   - The fluence from the detector (for adjoint) to 
-%                           each voxel. (1/(ps mm^2))
-%   params   - Struct with the following fields:
-%               t       - Time vector. (ps)
-%               x       - X-axis vector. (mm)
-%               y       - Y-axis vector. (mm)
-%               z       - Z-axis vector. (mm)
-%               runTime - Time to run MCX. (s)
-%   MCXout   - Output struct from mcxlab()
+%   adjoint - Adjoint simulation results structure [struct]
+%   params  - Simulation parameters and coordinates [struct]
+%   MCXout  - Raw output from MCXLAB [struct]
     
     arguments
         rs (1,3) double; %mm [x, y, z]

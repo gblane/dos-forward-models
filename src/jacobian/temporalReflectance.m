@@ -1,26 +1,19 @@
 function [R] = temporalReflectance(rs, rd, t, optProp, NVA)
-% Giles Blaney Ph.D. Spring 2023
-% [R] = temporalReflectance(rs, rd, tns, optProp)
+% temporalReflectance Calculate the temporal point spread function (TPSF).
+%
+% [R] = temporalReflectance(rs, rd, t, optProp, NVA)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Isotropic source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   t       - Time. (ps)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
-%   Name Value Arguments:
-%           - 'simTyp' (default='DT'): String to switch between 'DT' and
-%               'MC' simulation type.
-%           - 'np' (default=1e9): Number of photons for MC.
-%           - 'L' (default=[200, 200, 100]): Volume size for MC. (mm)
-%           - 'grdSp' (default=100): Voxel side length for MC. (mm)
-%           - 'g' (default=0.9): Anisotropy parameter.
-%           - 'detRad' (default=1.5): Detector radius for MC. (mm)
+%   rs      - Isotropic source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   t       - Time [ps]
+%   optProp - Struct of optical properties [struct]
+%   NVA     - Name-Value Arguments [struct]
+%
 % Outputs:
-%   R       - Temporal reflectance. (1/(ps mm^2))
+%   R - Temporal reflectance [1/(ps*mm^2)]
     
     arguments
         rs (:,3) double; %mm

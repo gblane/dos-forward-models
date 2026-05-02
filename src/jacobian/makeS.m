@@ -1,72 +1,21 @@
 function [S, params, Svox] = makeS(typStr, rs, rd, optProp, NVA)
+% makeS Generate sensitivity maps for various measurement types.
+%
 % [S, params, Svox] = makeS(typStr, rs, rd, optProp, NVA)
-% 
-% Giles Blaney Ph.D. Summer 2023
-% 
+%
+% Written by Giles Blaney, Ph.D. Summer 2023
+%
 % Inputs:
-%   typStr   - String setting the type of data considered in the format:
-%               AA_BB_C where, [e.g., CW_SD_I or FD_DS_P]
-%               AA is the temporal domain either: 
-%                   CW  - Continuous Wave
-%                   FD  - Frequency-Domain 
-%                   TD  - Time-Domain 
-%               BB is the arrangement type either:
-%                   SD  - Single-Distance 
-%                   SS  - Single-Slope 
-%                   DS  - Dual-Slope 
-%               CC is the data-type either:
-%                   I   - Intensity for CW or FD (Amplitude for FD)
-%                   GI  - Gated Intensity for TD
-%                   DGI - Difference in Gated Intensity for TD 
-%                   P   - Phase for FD
-%                   T   - Mean time-of-flight for TD
-%                   V   - Variance for TD
-%   rs       - Pencil beam source coordinates [x, y, z]. (mm)
-%   rd       - Detector coordinates in [x, y, z]. (mm)
-%   optProp  - (OPTIONAL) Struct of optical properties with the following
-%                fields:
-%                    nin  - (default=1.333) Index of refraction inside. (-)
-%                    nout - (default=1) Index of refraction outside. (-)
-%                    musp - (default=1.1 1/mm) Reduced scattering. (1/mm)
-%                    g    - (default=0.9) Anisotropy for MC. (-)
-%                    mua  - (default=0.011 1/mm) Absorption. (1/mm)
-% 
-% Name Value Arguments:
-%   'pert'   - (default=[1, 1, 1] mm) Size of perturbation in [x, y, z], 
-%               must be a multiple of voxel size (i.e., dr). (mm)
-%   'dr'     - (default=1 mm) Voxel side length. (mm)
-%   'xl'     - (default: 10 mm past the extent of the optodes) Limits in the
-%               x direction in [min, max]. (mm)
-%   'yl'     - (default: 10 mm past the extent of the optodes) Limits in the
-%               y direction in [min, max]. (mm)
-%   'zl'     - (default=[0, 25] mm) Limits in the y direction in [min, max].
-%               (mm)
-%   'fmod'   - (default=100e6 Hz) Modulation frequency for FD. (Hz)
-%   'ndt'    - (default=10e3) Number of time bins for TD or MC.
-%   'tend'   - (default=10e3 ps) Max time bin edge for TD or MC. (ps) 
-%   'tg'     - (default=[1000, 2000] ps) Gate start and end time for TD GI.
-%               (ps)
-%   'tgE     - (default=[0, 1000] ps) Early gate start and end time for 
-%               TD DGI. (ps)
-%   'simTyp' - (default='DT'): String to switch between 'DT' 
-%               (Diffusion Theory) and 'MC' (Monte Carlo w/ MCX) 
-%               simulation type.
-%   'detNA'  - (default=0.5) Detector NA for MC.
-%   'np'     - (default=1e8): Number of photons for MC.
-%   'usePar' - (default=true): Use parfoor loops.
-%   'FFTconv'- (default=true): Use ifft(fft*fft) as conv.
-% 
+%   typStr  - Data type string (e.g., CW_SD_I) [string]
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   optProp - Struct of optical properties [struct]
+%   NVA     - Name-Value Arguments [struct]
+%
 % Outputs:
-%   S        - Sensitivity (unit-less)
-%   params   - Struct with the following fields
-%               x        - X-axis vector. (mm)
-%               y        - Y-axis vector. (mm)
-%               z        - Z-axis vector. (mm)
-%               xl_valid - Valid x-axis limits with perturbation size. (mm)
-%               yl_valid - Valid y-axis limits with perturbation size. (mm)
-%               zl_valid - Valid z-axis limits with perturbation size. (mm)
-%   Svox     - Voxelized sensitivity not considering the perturbation size.
-%               (unit-less)
+%   S      - Sensitivity [unitless]
+%   params - Parameters and coordinates structure [struct]
+%   Svox   - Voxelized sensitivity [unitless]
 
     arguments
         typStr (1,:) string;

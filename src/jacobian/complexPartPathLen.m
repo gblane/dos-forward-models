@@ -1,22 +1,20 @@
 function [l] = complexPartPathLen(rs, r, rd, V, omega, optProp)
-% Giles Blaney Spring 2019
-% Updated Giles Blaney Ph.D. Spring 2023
+% complexPartPathLen Calculate complex partial pathlength.
+%
 % [l] = complexPartPathLen(rs, r, rd, V, omega, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector coordinates. (mm)
-%   V       - Volume. (mm^3)
-%   omega   - (OPTIONAL, default=2*pi*1.40625e8 rad/sec) Angular modulation
-%             frequency. (rad/sec)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   r       - Center coordinate of volume [mm]
+%   rd      - Detector coordinates [mm]
+%   V       - Volume [mm^3]
+%   omega   - Angular modulation frequency [rad/sec]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   l       - Complex partial pathlength. (mm)
+%   l - Complex partial pathlength [mm]
 
     arguments
         rs (:,3) double;

@@ -1,85 +1,22 @@
 function [SD, SS, DS, params] = makeSenMaps(armt, pert, geo, optProp, opts)
-% [SD, SS, DS, params] = makeSenMaps(armt, pert, geo, optProp, opts)
-% 
-% Giles Blaney Summer 2019
-% 
-% NOTE: All units are in mm or 1/mm.
-% 
-% Coordinate system used by this code assumes z axis (3rd index) is normal
-% to the surface of the medium and positive into the medium.
+% makeSenMaps Generate sensitivity maps for a semi-infinite medium.
 %
-% All inputs optional, defaults will be used with no inputs.
-% 
-% Inputs:   
-%   armt    - Arrangement structure with the following feilds:
-%               rSrc  - Coordinates of sources (number of sources X 3) {mm}
-%                       [x1, y1, z1; x2, y2, z2; ... ; xn, yn, zn]
-%               rDet  - Coordinates of detectors (same structure as rSrc)
-%                       {mm}
-%               SDprs - Single distance pairs (number of pairs X 2)
-%                       [sInd1, dInd1; sInd2, dInd2; ... ;sIndn, dIndn]
-%               SSprs - Single slope pairs (number of distances X 2 X 
-%                       number of pairs)
-%                       SSprs(:, :, n)=[sInd1, dInd1; sInd2, dInd2]
-%               DSprs - Dual slope pairs (number of distances X 2 X
-%                       number of slopes X number of pairs)
-%                       DSprs(:, :, 1, n)=[sInd11, dInd11; sInd12, dInd12]
-%                       DSprs(:, :, 2, n)=[sInd21, dInd21; sInd22, dInd22]
-%   
-%   pert    - Perturbation structure with the following feilds:
-%               partSz - Size of perturbation volume in voxels (1 X 3)
-%                        [nx, ny, nz]
-%               dmua   - Change in the absorption coefficient of 
-%                        perturbation {1/mm}
-%   
-%   geo     - Geometry structure with the following feilds:
-%               xMar - Margin in x direction of full volume, volume will
-%                      extend from -xMar to +xMar along the x axis {mm}
-%               yMar - Margin in y direction of full volume, volume will
-%                      extend from -yMar to +yMar along the y axis {mm}
-%               zMax - Maximum z of full volume, volume will extend from 0
-%                      to +zMax {mm}
-%               dr   - Voxel size in three dimentions {mm}
-%                      [dx, dy, dz]
-%   
-%   optProp - Optical properties structure with the following feilds:
-%               nin  - Index of refraction inside the medium
-%               nout - Index of refraction outside the medium
-%               musp - Baseline scattering coefficient within medium {1/mm}
-%               mua  - Baseline absorption coefficient within medium {1/mm}
-%   
-%   opts    - Options structure with the following feilds:
-%               fmod - Modulation frequency {Hz}
-%               PhN  - Noise in phase measurement {deg}
-%               InN  - Noise in intensity measurement {percent}
-% 
+% [SD, SS, DS, params] = makeSenMaps(armt, pert, geo, optProp, opts)
+%
+% Written by Giles Blaney, Ph.D. Summer 2019
+%
+% Inputs:
+%   armt    - Arrangement structure [struct]
+%   pert    - Perturbation structure [struct]
+%   geo     - Geometry structure [struct]
+%   optProp - Optical properties structure [struct]
+%   opts    - Options structure [struct]
+%
 % Outputs:
-%   SD      - Single distance structure with the following feilds:
-%               S_Ph  - Phase sensitivity map (voxels in x X voxels in y X
-%                      voxels in z)
-%               S_In  - Intensity sensitivity map (same structure as S_Ph)
-%               S_PhN - Noise equivalent sensitivity for phase
-%               S_InN - Noise equivalent sensitivity for intensity
-%   
-%   SS      - Single slope structure with the same feilds as SD
-%   
-%   DS      - Dual slope structure with the same feilds as SD
-%   
-%   params  - Parameters structure with the following feilds:
-%               armt    - Arrangement structure same as input
-%               geo     - Geometry structure same as input with the following
-%                         additional feilds:
-%                           X - Meshgird for x axis (voxels in x X
-%                               voxels in y X voxels in z) {mm}
-%                           Y - Meshgird for y axis (same structure as X)
-%                               {mm}
-%                           Z - Meshgird for z axis (same structure as X)
-%                               {mm}
-%                           x - x axis coordinates (1 X voxels in x) {mm}
-%                           y - y axis coordinates (1 X voxels in y) {mm}
-%                           z - z axis coordinates (1 X voxels in z) {mm}
-%               optProp - Optical properties structure same as input
-%               opts    - Options structure same as input
+%   SD     - Single distance sensitivity structure [struct]
+%   SS     - Single slope sensitivity structure [struct]
+%   DS     - Dual slope sensitivity structure [struct]
+%   params - Parameters structure [struct]
 
     warning('Planned to be replaced by makeS and deprecated in the future -GB')
 

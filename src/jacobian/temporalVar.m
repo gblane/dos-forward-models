@@ -1,17 +1,17 @@
 function [V] = temporalVar(rs, rd, optProp)
-% Giles Blaney Ph.D. Spring 2023
+% temporalVar Calculate the variance of the TPSF.
+%
 % [V] = temporalVar(rs, rd, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=1.4) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=1.2 1/mm) Reduced scattering. (1/mm)
-%                mua  - (default=0.01 1/mm) Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   V       - Varinace; <t^2>-<t>^2. (ps^2)
+%   V - Variance of t [ps^2]
     
     arguments
         rs (:,3) double; %mm

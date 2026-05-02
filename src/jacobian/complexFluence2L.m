@@ -1,25 +1,21 @@
 function [PHI] = complexFluence2L(rs, r, thk, en, optProp, opts, prtNm)
-% Giles Blaney Spring 2020
-% [PHI] = complexFluence2L(rs, rd, en, thk, optProp, opts)
+% complexFluence2L Calculate complex fluence in a two-layer medium.
+%
+% [PHI] = complexFluence2L(rs, r, thk, en, optProp, opts, prtNm)
+%
+% Written by Giles Blaney, Ph.D. Spring 2020
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   r       - Coordinates to find fluence at. (mm)
-%   thk     - Layer thickness. (mm)
-%   en      - (OPTIONAL) Bessel function roots.
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - (default=[1.4, 1.4]) Index of refraction inside. (-)
-%                nout - (default=1) Index of refraction outside. (-)
-%                musp - (default=[1.20, 0.25] 1/mm) Reduced scattering.
-%                       (1/mm)
-%                mua  - (default=[0.008, 0.020] 1/mm) Absorption. (1/mm)
-%   opts    - (OPTIONAL) Options structure with the following feilds:
-%               fmod   - (default=1.40625 Hz) Modulation frequency {Hz}
-%               h_end  - (default=2000) Number of Bessel function zeros
-%               B      - (default=150 mm) Radius of cylindrical boundary {mm}
-%   prtNm   - (OPTIONAL, default=PHI) Print name. (string)
+%   rs      - Source coordinates [mm]
+%   r       - Coordinates to find fluence at [mm]
+%   thk     - Layer thickness [mm]
+%   en      - Bessel function roots [unitless]
+%   optProp - Struct of optical properties [struct]
+%   opts    - Options structure [struct]
+%   prtNm   - Print name [string]
+%
 % Outputs:
-%   PHI     - Complex fluence. (1/mm^2)
+%   PHI - Complex fluence [1/mm^2]
     
     tic;
     if nargin<=6

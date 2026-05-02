@@ -1,18 +1,18 @@
 function [L, R] = continuousTotPathLen(rs, rd, optProp)
-% Giles Blaney Ph.D. Spring 2023
+% continuousTotPathLen Calculate continuous-wave (CW) total pathlength.
+%
 % [L, R] = continuousTotPathLen(rs, rd, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   rd      - Detector coordinates. (mm)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - Index of refraction inside. (-)
-%                nout - Index of refraction outside. (-)
-%                musp - Reduced scattering. (1/mm)
-%                mua  - Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   rd      - Detector coordinates [mm]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   L       - Total pathlength. (mm)
-%   R       - Reflectance. (1/mm^2)
+%   L - Total pathlength [mm]
+%   R - Reflectance [1/mm^2]
 
     arguments
         rs (:,3) double;

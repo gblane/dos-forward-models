@@ -1,19 +1,19 @@
 function [l] = continuousPartPathLen(rs, r, rd, V, optProp)
-% Giles Blaney Ph.D. Spring 2023
+% continuousPartPathLen Calculate continuous-wave (CW) partial pathlength.
+%
 % [l] = continuousPartPathLen(rs, r, rd, V, optProp)
+%
+% Written by Giles Blaney, Ph.D. Spring 2023
+%
 % Inputs:
-%   rs      - Source coordinates. (mm)
-%   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector coordinates. (mm)
-%   V       - Volume. (mm^3)
-%   optProp - (OPTIONAL) Struct of optical properties with the following
-%             fields:
-%                nin  - Index of refraction inside. (-)
-%                nout - Index of refraction outside. (-)
-%                musp - Reduced scattering. (1/mm)
-%                mua  - Absorption. (1/mm)
+%   rs      - Source coordinates [mm]
+%   r       - Center coordinate of volume [mm]
+%   rd      - Detector coordinates [mm]
+%   V       - Volume [mm^3]
+%   optProp - Struct of optical properties [struct]
+%
 % Outputs:
-%   l       - Partial pathlength. (mm)
+%   l - Partial pathlength [mm]
 
     arguments
         rs (:,3) double;

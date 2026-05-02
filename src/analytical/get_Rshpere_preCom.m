@@ -1,7 +1,19 @@
 function [preCom] = get_Rshpere_preCom(rhos_arc, rad, NVA)
-% [preCom] = get_Rshpere_preCom(rho_arc, rad)
-% Supporting function for R_sphere_withPreCom()
-% Giles Blaney Ph.D. Fall 2023
+% get_Rshpere_preCom Precompute values for spherical reflectance calculations.
+%
+% [preCom] = get_Rshpere_preCom(rhos_arc, rad, NVA)
+%
+% Written by Giles Blaney, Ph.D. Fall 2023
+%
+% Inputs:
+%   rhos_arc - Source-Detector Arc Lengths [mm]
+%   rad      - Sphere Radius [mm]
+%   NVA      - Name-Value Arguments:
+%     nbf      - Number of Bessel functions [count]
+%     nz       - Number of zeros of each Bessel function [count]
+%
+% Outputs:
+%   preCom - Precomputed values for spherical reflectance [struct]
     
     arguments
         rhos_arc (1,:) double; %Source-Detector Arc Lengths (mm)
