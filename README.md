@@ -25,5 +25,9 @@ Fundamental solutions to the Radiative Transport Equation (under diffusion appro
 - **Homogeneous & Spherical:** Solutions for standard geometries (`R_FD_forward.m`, `R_sphere_withPreCom.m`).
 - **Two-Layer:** Efficient reflectance models for layered tissue (`R_2L_withPreCom.m`, `twoLayEffHomoOptProp.m`).
 
+### Specialized Applications (`specialized_applications/`)
+- **Fluorescence Flow Cytometry:** Monte Carlo and SNR modeling for dual-ratio fluorescence flow measurements.
+- **Pulse Oximetry:** Modeling the effect of LED spectral linewidth on pulse oximetry accuracy.
+
 ## Author
 Developed by Giles Blaney, Ph.D.
