@@ -2,8 +2,8 @@ function [R] = temporalReflectance(rs, rd, t, optProp, NVA)
 % Giles Blaney Ph.D. Spring 2023
 % [R] = temporalReflectance(rs, rd, tns, optProp)
 % Inputs:
-%   rs      - Isotropic source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Isotropic source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   t       - Time. (ps)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:

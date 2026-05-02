@@ -2,10 +2,10 @@ function [PHI_Grad] = complexFluence_Grad(rs, rd, omega, optProp)
 % Giles Blaney Winter 2020
 % [PHI_Grad] = complexFluence_Grad(rs, rd, omega, optProp)
 % Inputs:
-%   rs       - Source corrdinates. (mm)
-%   rd       - Detector corrdinates. (mm)
+%   rs       - Source coordinates. (mm)
+%   rd       - Detector coordinates. (mm)
 %   omega    - (OPTIONAL, default=2*pi*1.40625e8 rad/sec) Angular modulation
-%              frequecy. (rad/sec)
+%              frequency. (rad/sec)
 %   optProp  - (OPTIONAL) Struct of optical properties with the following
 %              fields:
 %                 nin  - (default=1.4) Index of refraction inside. (-)

@@ -2,8 +2,8 @@ function [L, R] = continuousTotPathLen(rs, rd, optProp)
 % Giles Blaney Ph.D. Spring 2023
 % [L, R] = continuousTotPathLen(rs, rd, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:
 %                nin  - Index of refraction inside. (-)

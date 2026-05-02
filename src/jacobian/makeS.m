@@ -21,8 +21,8 @@ function [S, params, Svox] = makeS(typStr, rs, rd, optProp, NVA)
 %                   P   - Phase for FD
 %                   T   - Mean time-of-flight for TD
 %                   V   - Variance for TD
-%   rs       - Pencil beam source corrdinates [x, y, z]. (mm)
-%   rd       - Detector corrdinates in [x, y, z]. (mm)
+%   rs       - Pencil beam source coordinates [x, y, z]. (mm)
+%   rd       - Detector coordinates in [x, y, z]. (mm)
 %   optProp  - (OPTIONAL) Struct of optical properties with the following
 %                fields:
 %                    nin  - (default=1.333) Index of refraction inside. (-)

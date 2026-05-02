@@ -2,8 +2,8 @@ function [PHI] = temporalFluence(rs, rd, t, optProp)
 % Giles Blaney Ph.D. Spring 2023
 % [PHI] = temporalFluence(rs, rd, tns, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   t       - Time. (ps)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:

@@ -54,7 +54,7 @@ function [SD, SS, DS, params] = makeSenMaps_Scat(armt, pert, geo, optProp, opts)
 %               InN  - Noise in intensity measurement {percent}
 % 
 % Outputs:
-%   SD      - Single distnace structure with the following feilds:
+%   SD      - Single distance structure with the following feilds:
 %               S_Ph  - Phase sensitivity map (voxels in x X voxels in y X
 %                      voxels in z)
 %               S_In  - Intensity sensitivity map (same structure as S_Ph)

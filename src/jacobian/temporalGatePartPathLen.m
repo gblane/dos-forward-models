@@ -2,9 +2,9 @@ function [l] = temporalGatePartPathLen(rs, r, rd, Vol, tg, optProp, NVA)
 % Giles Blaney Ph.D. Spring 2023
 % [l] = temporalGatePartPathLen(rs, rd, Vol, tg, optProp, NVA)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
 %   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   Vol     - Volume. (mm^3)
 %   tg      - Gate start and end time. (ps)
 %   optProp - (OPTIONAL) Struct of optical properties with the following

@@ -2,8 +2,8 @@ function [L] = temporalGateTotPathLen(rs, rd, tg, optProp, NVA)
 % Giles Blaney Ph.D. Spring 2023
 % [L] = temporalGateTotPathLen(rs, rd, tg, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   tg      - Gate start and end time. (ps)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:

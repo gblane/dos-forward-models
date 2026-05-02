@@ -2,9 +2,9 @@ function [l] = temporalKthMomPartPathLen(rs, r, rd, Vol, k, optProp, NVA)
 % Giles Blaney Ph.D. Spring 2023
 % [l] = temporalKthMomPartPathLen(rs, rd, tns, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
 %   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   Vol     - Volume. (mm^3)
 %   k       - (OPTIONAL; default=1) Moment order.
 %   optProp - (OPTIONAL) Struct of optical properties with the following

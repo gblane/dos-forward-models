@@ -2,8 +2,8 @@ function [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
 % Giles Blaney Spring 2020
 % [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   thk     - Layer thickness. (mm)
 %   en      - (OPTIONAL) Bessel function roots.
 %   optProp - (OPTIONAL) Struct of optical properties with the following

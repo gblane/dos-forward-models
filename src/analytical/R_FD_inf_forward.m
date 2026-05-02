@@ -2,11 +2,11 @@ function [R] = R_FD_inf_forward(rho, mua, musp, omega, v)
 % [R] = R_FD_forward(rho, mua, musp, omega)
 % Giles Blaney Spring 2019
 % Inputs:
-%   rs      - Source detector distnace. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source detector distance. (mm)
+%   rd      - Detector coordinates. (mm)
 %   musp    - Reduced scattering. (1/mm)
 %   mua     - Absorption. (1/mm)
-%   omega   - Angular modulation frequecy. (rad/sec)
+%   omega   - Angular modulation frequency. (rad/sec)
 %                
 % Outputs:
 %   R       - Complex reflectance. (1/mm^2)

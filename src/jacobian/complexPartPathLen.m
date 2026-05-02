@@ -3,12 +3,12 @@ function [l] = complexPartPathLen(rs, r, rd, V, omega, optProp)
 % Updated Giles Blaney Ph.D. Spring 2023
 % [l] = complexPartPathLen(rs, r, rd, V, omega, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
 %   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   V       - Volume. (mm^3)
 %   omega   - (OPTIONAL, default=2*pi*1.40625e8 rad/sec) Angular modulation
-%             frequecy. (rad/sec)
+%             frequency. (rad/sec)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:
 %                nin  - (default=1.4) Index of refraction inside. (-)

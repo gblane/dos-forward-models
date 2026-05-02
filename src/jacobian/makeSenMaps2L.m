@@ -65,10 +65,10 @@ function [SD, SS, DS, params] = makeSenMaps2L(armt, pert, geo, optProp, opts)
 %                        'homoEff' - Use homogenous total pathlengths from
 %                        effective homogenous optical properties, as-if
 %                        effective homogenous optical properties were used
-%                        to find DPF and DSF in a real-world measurment
+%                        to find DPF and DSF in a real-world measurement
 % 
 % Outputs:
-%   SD      - Single distnace structure with the following feilds:
+%   SD      - Single distance structure with the following feilds:
 %               S_Ph  - Phase sensitivity map (voxels in x X voxels in y X
 %                      voxels in z)
 %               S_In  - Intensity sensitivity map (same structure as S_Ph)

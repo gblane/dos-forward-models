@@ -2,8 +2,8 @@ function [V] = temporalVar(rs, rd, optProp)
 % Giles Blaney Ph.D. Spring 2023
 % [V] = temporalVar(rs, rd, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:
 %                nin  - (default=1.4) Index of refraction inside. (-)

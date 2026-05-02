@@ -2,8 +2,8 @@ function [L] = temporalKthMomTotPathLen(rs, rd, k, optProp)
 % Giles Blaney Ph.D. Spring 2023
 % [L] = temporalKthMomTotPathLen(rs, rd, k, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   k       - (OPTIONAL; default=1)Moment order.
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:

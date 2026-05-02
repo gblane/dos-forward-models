@@ -2,9 +2,9 @@ function [l] = complexPartPathLen2L(rs, r, rd, V, thk, en, optProp, opts)
 % Giles Blaney Spring 2020
 % [l] = complexPartPathLen2(rs, r, rd, V, thk, en, optProp, opts)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
 %   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   V       - Volume. (mm^3)
 %   thk     - Layer thickness. (mm)
 %   en      - (OPTIONAL) Bessel function roots.

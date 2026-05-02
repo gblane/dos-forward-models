@@ -3,7 +3,7 @@ function [R] = R_TD_forward(rho, mua, musp, t, v, z0)
 % Giles Blaney Summer 2021
 % Uses Zero-Boundry (Equ. 11.18 in Bigio & Fantini)
 % Inputs:
-%   rho     - Source detector distnace. (mm)
+%   rho     - Source detector distance. (mm)
 %   musp    - Reduced scattering. (1/mm)
 %   mua     - Absorption. (1/mm)
 %   t       - Time after impulse. (sec)

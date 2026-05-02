@@ -2,9 +2,9 @@ function [l] = continuousPartPathLen(rs, r, rd, V, optProp)
 % Giles Blaney Ph.D. Spring 2023
 % [l] = continuousPartPathLen(rs, r, rd, V, optProp)
 % Inputs:
-%   rs      - Source corrdinates. (mm)
+%   rs      - Source coordinates. (mm)
 %   r       - Center corrdinate of volume. (mm)
-%   rd      - Detector corrdinates. (mm)
+%   rd      - Detector coordinates. (mm)
 %   V       - Volume. (mm^3)
 %   optProp - (OPTIONAL) Struct of optical properties with the following
 %             fields:

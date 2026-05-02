@@ -3,7 +3,7 @@ function [preCom] = get_R2L_preCom(rho, opt)
 % Supporting function for R_2L_withPreCom()
 % Giles Blaney Ph.D. Summer 2022
 % Inputs:
-%   rho     - 1 X numDist X 1 vector of source-detector distnaces (mm)
+%   rho     - 1 X numDist X 1 vector of source-detector distances (mm)
 %   opt     - Struct with feilds (Optional [default]):
 %               no    - Index of refraction outside [1]
 %               ni    - Index of refraction inside [1.4]

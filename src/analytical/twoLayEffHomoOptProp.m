@@ -8,7 +8,7 @@ function [Y] = twoLayEffHomoOptProp(X, rho, opts)
 %               X(:, 3): Top layer reduced scattering coefficient (1/mm) 
 %               X(:, 4): Bottom layer reduced scattering coefficient (1/mm)
 %               X(:, 5): Top layer thickness (mm)
-%   rho     - 1 X numDist vector of source-detector distnaces (mm)
+%   rho     - 1 X numDist vector of source-detector distances (mm)
 %   opt     - Struct with feilds (Optional [default]):
 %               fmod  - Modulation frequency [140.625e6] (Hz)
 %               ni    - Index of refraction inside [1.4]
