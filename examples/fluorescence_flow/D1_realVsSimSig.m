@@ -1,5 +1,7 @@
 %% Setup
 clear; home;
+addpath(genpath('../../src'));
+addpath('../../data');
 
 SD1Apar=load('fromNEU/parallel-S1-DA_F1.mat');
 SD2Bpar=load('fromNEU/parallel-S2-DB_F2.mat');

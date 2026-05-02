@@ -1,5 +1,7 @@
 %% Setup
 home; clear;
+addpath(genpath('../../src'));
+addpath('../../data');
 
 load('MCout.mat', 'x', 'y', 'z', 'PHI', 'ZZ');
 load('Bout_PckNoi.mat');

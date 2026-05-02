@@ -1,5 +1,7 @@
 %% Setup
 clear; home;
+addpath(genpath('../../src'));
+addpath('../../data');
 
 h=6.62607015e-34; %J/Hz
 c=299792458; %m/s

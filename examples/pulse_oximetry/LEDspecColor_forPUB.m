@@ -1,5 +1,7 @@
 %% Giles Blaney, PhD; Spring 2026
 clear; home;
+addpath(genpath('../../src'));
+addpath('../../data');
 
 %  Nominal RED and IR wavelengths & full width half maxes
 lamRED = 660; %nm

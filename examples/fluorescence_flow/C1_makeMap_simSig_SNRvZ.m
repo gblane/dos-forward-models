@@ -1,5 +1,7 @@
 %% Setup
 home; clear;
+addpath(genpath('../../src'));
+addpath('../../data');
 
 load('MCout_SD0.mat', 'x', 'y', 'z', 'PHI', 'grdSp');
 PHI_SD0=PHI;

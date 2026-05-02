@@ -1,5 +1,7 @@
 %% Setup
 clear; home;
+addpath(genpath('../../src'));
+addpath('../../data');
 
 np=1e9;
 % np=1e8;

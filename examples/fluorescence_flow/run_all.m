@@ -1,6 +1,9 @@
 % Note: This code expects that MCXLAB (link below) in MATLAB's path
 % http://mcx.space/wiki/index.cgi?Doc/MCXLAB
 
+addpath(genpath('../../src'));
+addpath('../../data');
+
 addpath("deps/");
 setALLdefault2LaTex;
 
