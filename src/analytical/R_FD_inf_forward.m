@@ -1,15 +1,19 @@
 function [R] = R_FD_inf_forward(rho, mua, musp, omega, v)
-% [R] = R_FD_forward(rho, mua, musp, omega)
-% Giles Blaney Spring 2019
+% R_FD_inf_forward Frequency-domain reflectance from an infinite medium.
+%
+% [R] = R_FD_inf_forward(rho, mua, musp, omega, v)
+%
+% Written by Giles Blaney, Ph.D. Spring 2019
+%
 % Inputs:
-%   rs      - Source detector distance. (mm)
-%   rd      - Detector coordinates. (mm)
-%   musp    - Reduced scattering. (1/mm)
-%   mua     - Absorption. (1/mm)
-%   omega   - Angular modulation frequency. (rad/sec)
+%   rho     - Source detector distance [mm]
+%   mua     - Absorption [1/mm]
+%   musp    - Reduced scattering [1/mm]
+%   omega   - Angular modulation frequency [rad/sec]
+%   v       - Speed of light in medium [mm/sec]
 %                
 % Outputs:
-%   R       - Complex reflectance. (1/mm^2)
+%   R       - Complex reflectance [1/mm^2]
 
 % Equation 12.2 in Bigio and Fantini
     

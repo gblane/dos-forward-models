@@ -1,20 +1,24 @@
 function [preCom] = get_R2L_preCom(rho, opt)
+% get_R2L_preCom Supporting function for R_2L_withPreCom().
+%
 % [preCom] = get_R2L_preCom(rho, opt)
-% Supporting function for R_2L_withPreCom()
-% Giles Blaney Ph.D. Summer 2022
+%
+% Written by Giles Blaney, Ph.D. Summer 2022
+%
 % Inputs:
-%   rho     - 1 X numDist X 1 vector of source-detector distances (mm)
-%   opt     - Struct with feilds (Optional [default]):
-%               no    - Index of refraction outside [1]
-%               ni    - Index of refraction inside [1.4]
-%               B     - Radius of 2-layer cylinder [300] (mm)
-%               h_end - Number of Bessel function zeros [3000]
+%   rho     - 1 X numDist X 1 vector of source-detector distances [mm]
+%   opt     - Struct with fields (Optional [default]):
+%               no    - Index of refraction outside [1] [-]
+%               ni    - Index of refraction inside [1.4] [-]
+%               B     - Radius of 2-layer cylinder [300] [mm]
+%               h_end - Number of Bessel function zeros [3000] [-]
+%
 % Outputs:
-%   preCom  - Struct for use with R_2L_withPreCom() function with feilds:
-%               A         - Index of refraction mismatch parameter
-%               en_pillar - 1 X 1 X h_end pillar of Bessel function zeros
+%   preCom  - Struct for use with R_2L_withPreCom() function with fields:
+%               A         - Index of refraction mismatch parameter [-]
+%               en_pillar - 1 X 1 X h_end pillar of Bessel function zeros [-]
 %               Q         - 1 X numDist X h_end array of Bessel function of
-%                           1st kind values
+%                           1st kind values [-]
     
     if nargin<=1
         no=1;

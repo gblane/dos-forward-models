@@ -1,18 +1,21 @@
 function [R] = R_TD_forward(rho, mua, musp, t, v, z0)
-% [R] = R_FD_forward(rho, mua, musp, t, v)
-% Giles Blaney Summer 2021
-% Uses Zero-Boundry (Equ. 11.18 in Bigio & Fantini)
+% R_TD_forward Time-domain reflectance from a semi-infinite medium.
+%
+% [R] = R_TD_forward(rho, mua, musp, t, v, z0)
+%
+% Written by Giles Blaney, Ph.D. Summer 2021
+%
 % Inputs:
-%   rho     - Source detector distance. (mm)
-%   musp    - Reduced scattering. (1/mm)
-%   mua     - Absorption. (1/mm)
-%   t       - Time after impulse. (sec)
-%   v       - Speed of light in medium. (mm/sec)
-%   z0      - Iso-Source Depth
+%   rho     - Source detector distance [mm]
+%   mua     - Absorption [1/mm]
+%   musp    - Reduced scattering [1/mm]
+%   t       - Time after impulse [sec]
+%   v       - Speed of light in medium [mm/sec]
+%   z0      - Iso-Source Depth [mm]
 %   Note: rho and t should have orthogonal dims
 % 
 % Outputs:
-%   R       - Complex reflectance. (1/(mm^2 sec))
+%   R       - Time-domain reflectance [1/(mm^2 sec)]
     
     if nargin<=3
         t=(linspace(0, 5e-9, 1000)); %sec
