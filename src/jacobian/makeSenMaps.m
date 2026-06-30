@@ -3,7 +3,7 @@ function [SD, SS, DS, params] = makeSenMaps(armt, pert, geo, optProp, opts)
 %
 % [SD, SS, DS, params] = makeSenMaps(armt, pert, geo, optProp, opts)
 %
-% Written by Giles Blaney, Ph.D. Summer 2019
+% Written by Giles Blaney (Summer 2019; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   armt    - Arrangement structure [struct]

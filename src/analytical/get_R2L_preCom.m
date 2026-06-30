@@ -32,7 +32,7 @@ function [preCom] = get_R2L_preCom(rho, opt)
         h_end=opt.h_end;
     end
     
-    load('zeroOrdBesselRoots.mat', 'en');
+    en=zeroOrdBesselRoots(h_end);
     en_pillar=reshape(en, 1, 1, length(en));
     
     Q=besselj(...

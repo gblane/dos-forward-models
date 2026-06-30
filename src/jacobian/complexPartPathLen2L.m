@@ -3,7 +3,7 @@ function [l] = complexPartPathLen2L(rs, r, rd, V, thk, en, optProp, opts)
 %
 % [l] = complexPartPathLen2L(rs, r, rd, V, thk, en, optProp, opts)
 %
-% Written by Giles Blaney, Ph.D. Spring 2020
+% Written by Giles Blaney (Spring 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rs      - Source coordinates [mm]
@@ -19,8 +19,6 @@ function [l] = complexPartPathLen2L(rs, r, rd, V, thk, en, optProp, opts)
 %   l - Complex partial pathlength [mm]
 
     if nargin<=5
-        load('zeroOrdBesselRoots.mat');
-        
         optProp.nin=[1.4, 1.4];
         optProp.nout=1;
         optProp.musp=[1.20, 0.25]; %1/mm
@@ -29,6 +27,7 @@ function [l] = complexPartPathLen2L(rs, r, rd, V, thk, en, optProp, opts)
         opts.fmod=1.40625e8; %Hz
         opts.h_end=2000;
         opts.B=150; %mm
+        en=zeroOrdBesselRoots(opts.h_end);
     end
     
     % Place source at origin of cylindrical geometry

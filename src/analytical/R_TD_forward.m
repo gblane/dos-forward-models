@@ -3,7 +3,7 @@ function [R] = R_TD_forward(rho, mua, musp, t, v, z0)
 %
 % [R] = R_TD_forward(rho, mua, musp, t, v, z0)
 %
-% Written by Giles Blaney, Ph.D. Summer 2021
+% Written by Giles Blaney (Summer 2021; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rho     - Source detector distance [mm]

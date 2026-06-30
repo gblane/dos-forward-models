@@ -23,6 +23,20 @@ This repository contains a comprehensive suite of MATLAB scripts for modeling ho
 ### Shared Data (`data/`)
 - Consolidated datasets and Monte Carlo output files (e.g., `MCout_avg.mat`).
 
+## Sister-Repo Dependencies
+
+The source functions in this repository are the canonical home for forward
+diffusion/Jacobian models such as `complexReflectance`,
+`complexTotPathLen`, `complexPartPathLen`, `complexTotPathLen2L`, and
+`zeroOrdBesselRoots`.
+
+The pulse-oximetry example uses `makeE` from the sibling repository
+`../dos-inverse-models`; the script adds that path locally and removes it
+before its local functions.
+
+`temporalVarPartPathLen` uses `struct2pairs` from `../my-matlab` when passing
+name-value arguments through to temporal moment helpers.
+
 ## Citations
 
 If you use this toolkit in your research, please cite the relevant publications:
@@ -32,7 +46,8 @@ If you use this toolkit in your research, please cite the relevant publications:
 3.  **Broadband Spectroscopy:** Blaney, G., Curtsmith, P., Sassaroli, A., Fernandez, C., & Fantini, S. (2021). Broadband absorption spectroscopy of heterogeneous biological tissue. *Applied Optics*, 60(25), 7552-7562. [https://doi.org/10.1364/AO.431013](https://doi.org/10.1364/AO.431013)
 
 ## Author
-Developed by Giles Blaney, Ph.D.
+Developed by Giles Blaney, Ph.D. Giles Blaney received his Ph.D. in May 2022;
+older file-level author dates before May 2022 are historical provenance.
 
 ---
 *This repository is a reorganized and documented version of a personal codebase, performed by Gemini CLI.*

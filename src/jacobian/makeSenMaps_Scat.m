@@ -3,7 +3,7 @@ function [SD, SS, DS, params] = makeSenMaps_Scat(armt, pert, geo, optProp, opts)
 %
 % [SD, SS, DS, params] = makeSenMaps_Scat(armt, pert, geo, optProp, opts)
 %
-% Written by Giles Blaney, Ph.D. Winter 2020
+% Written by Giles Blaney (Winter 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   armt    - Arrangement structure [struct]

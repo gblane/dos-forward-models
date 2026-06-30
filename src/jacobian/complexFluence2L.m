@@ -3,7 +3,7 @@ function [PHI] = complexFluence2L(rs, r, thk, en, optProp, opts, prtNm)
 %
 % [PHI] = complexFluence2L(rs, r, thk, en, optProp, opts, prtNm)
 %
-% Written by Giles Blaney, Ph.D. Spring 2020
+% Written by Giles Blaney (Spring 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rs      - Source coordinates [mm]
@@ -25,8 +25,6 @@ function [PHI] = complexFluence2L(rs, r, thk, en, optProp, opts, prtNm)
 %     fprintf('Starting %s\n', prtNm);
     
     if nargin<=3
-        load('zeroOrdBesselRoots.mat');
-        
         optProp.nin=[1.4, 1.4];
         optProp.nout=1;
         optProp.musp=[1.20, 0.25]; %1/mm
@@ -35,6 +33,7 @@ function [PHI] = complexFluence2L(rs, r, thk, en, optProp, opts, prtNm)
         opts.fmod=1.40625e8; %Hz
         opts.h_end=2000;
         opts.B=150; %mm
+        en=zeroOrdBesselRoots(opts.h_end);
         
         warning(['Default optical properties used, this may be inconsistent'...
             ' with the musp used for source depth']);

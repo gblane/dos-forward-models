@@ -3,7 +3,7 @@ function [R] = R_FD_forward(rho, mua, musp, omega, v)
 %
 % [R] = R_FD_forward(rho, mua, musp, omega, v)
 %
-% Written by Giles Blaney, Ph.D. Spring 2019
+% Written by Giles Blaney (Spring 2019; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rho     - Source detector distance [mm]

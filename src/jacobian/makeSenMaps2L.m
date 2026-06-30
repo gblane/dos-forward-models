@@ -3,7 +3,7 @@ function [SD, SS, DS, params] = makeSenMaps2L(armt, pert, geo, optProp, opts)
 %
 % [SD, SS, DS, params] = makeSenMaps2L(armt, pert, geo, optProp, opts)
 %
-% Written by Giles Blaney, Ph.D. Spring 2020
+% Written by Giles Blaney (Spring 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   armt    - Arrangement structure [struct]
@@ -72,7 +72,7 @@ function [SD, SS, DS, params] = makeSenMaps2L(armt, pert, geo, optProp, opts)
         opts.totL='2L';
     end
     
-    load('zeroOrdBesselRoots.mat');
+    en=zeroOrdBesselRoots(opts.h_end);
     
     rSrc_true=armt.rSrc; %mm
     rDet=armt.rDet; %mm

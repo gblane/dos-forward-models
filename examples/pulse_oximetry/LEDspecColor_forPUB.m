@@ -2,6 +2,8 @@
 clear; home;
 addpath(genpath('../../src'));
 addpath('../../data');
+invPath = genpath(fullfile('..','..','..','dos-inverse-models')); % makeE
+addpath(invPath);
 
 %  Nominal RED and IR wavelengths & full width half maxes
 lamRED = 660; %nm
@@ -52,7 +54,8 @@ P0ir_LD(iIR) = 1; %power/nm
 % Generate bulk tissue optical property spectra
 [muspTIS, muaTIS, nTIS] = tissueOptProps_func(lam);
 
-% Generate matrix of extinction coefficients for oxy- and deoxy-hemoglobin
+% Generate matrix of extinction coefficients for oxy- and deoxy-hemoglobin.
+% makeE is the canonical copy in ../dos-inverse-models.
 E_OD = makeE('OD',lam); %(1/mm)/uM
 
 %% ########## Calculate total path-length in bulk tissue <L> ##############
@@ -529,6 +532,9 @@ linkaxes([ax1,ax2],'xy');
 
 
 %% ########################################################################
+%% --- remove shared dependencies from the path before local functions -----
+rmpath(invPath);
+
 %% ########## Functions ###################################################
 %% ########################################################################
 
@@ -699,75 +705,4 @@ function A = n2A(nin, nout)
         A=1;
     end
 
-end
-
-% =============== Extinction Coefficients ===============
-function E = makeE(chroms, lambda)
-% E = makeE(chroms, lambda)
-% Giles Blaney Spring 2021
-% 
-% Inputs:   - chroms: String of chromophores to include in E. 
-%                     Available chromophores:
-%                     - O: Oxyhemoglobin
-%                     - D: Deoxyhemoglobin
-%                     - W: Water
-%                     - L: Lipid
-%                     (Default: 'OD')
-%                     Spaces are ignored.
-%           - lambda: Vectors of wavelengths (nm).
-%                     (Default: [830, 690])
-% 
-% Output:   - E: Extinction coefficient matrix.
-%                Units: 1/(mm uM) for O, D, CCOo, and CCOr
-%                       1/mm for W, L, and C
-%                size(E)=[length(lambda), length(chroms)];
-%                Defined as mua=E*C
-%                Order of C is defined by order in chroms input
-    
-% Relevant references in .mat files for each chromophore
-
-    if nargin<=0
-        chroms='OD';
-    end
-    if nargin<=1
-        lambda=[830, 690]; %nm
-    end
-    if size(lambda, 1)==1
-        lambda=lambda';
-    end
-    
-    chroms=chroms(~isspace(chroms));
-    
-    E=[];
-    while ~isempty(chroms)
-        switch chroms(1)
-            case 'O' %Oxy
-                blood=load('Bext.mat');
-                Oext=interp1(blood.Blambda, blood.Oext, lambda,...
-                    'linear', 'extrap');
-                Oext(Oext<0)=0;
-                E=[E, Oext];
-            case 'D' %Deoxy
-                blood=load('Bext.mat');
-                Dext=interp1(blood.Blambda, blood.Dext, lambda,...
-                    'linear', 'extrap');
-                Dext(Dext<0)=0;
-                E=[E, Dext];
-            case 'W' %Water
-                water=load('Wext.mat');
-                Wext=interp1(water.Wlambda, water.Wmua, lambda,...
-                    'linear', 'extrap');
-                Wext(Wext<0)=0;
-                E=[E, Wext];
-            case 'L' %Lipid
-                lipid=load('Lext.mat');
-                Lext=interp1(lipid.Llambda, lipid.Lmua, lambda,...
-                    'linear', 'extrap');
-                Lext(Lext<0)=0;
-                E=[E, Lext];
-            otherwise
-                warning(['Unknown chromophore' chroms(1) ', ignored']);
-        end
-        chroms(1)=[];
-    end
 end

@@ -3,7 +3,7 @@ function [SD, SS, DS, params] = simMeasFromSenMap(simParams, senMapParams)
 %
 % [SD, SS, DS, params] = simMeasFromSenMap(simParams, senMapParams)
 %
-% Written by Giles Blaney, Ph.D. Fall 2019
+% Written by Giles Blaney (Fall 2019; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   simParams    - Simulation parameters [struct]

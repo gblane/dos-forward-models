@@ -3,7 +3,7 @@ function [R_Grad] = complexReflectance_Grad(rs, rd, omega, optProp)
 %
 % [R_Grad] = complexReflectance_Grad(rs, rd, omega, optProp)
 %
-% Written by Giles Blaney, Ph.D. Winter 2020
+% Written by Giles Blaney (Winter 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rs      - Source coordinates [mm]

@@ -3,7 +3,7 @@ function [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
 %
 % [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
 %
-% Written by Giles Blaney, Ph.D. Spring 2020
+% Written by Giles Blaney (Spring 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rs      - Source coordinates [mm]
@@ -19,8 +19,6 @@ function [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
 %   PHI - Complex fluence [1/mm^2]
 
     if nargin<=3
-        load('zeroOrdBesselRoots.mat');
-        
         optProp.nin=[1.4, 1.4];
         optProp.nout=1;
         optProp.musp=[1.20, 0.25]; %1/mm
@@ -30,6 +28,7 @@ function [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
         opts.h_end=2000;
         opts.B=150; %mm
         opts.Method = 'CompFluence';
+        en=zeroOrdBesselRoots(opts.h_end);
     end
 
     if ~isfield(opts, 'Method')
@@ -57,27 +56,32 @@ function [L, Ll, PHI] = complexTotPathLen2L(rs, rd, thk, en, optProp, opts)
     PHI2=complexFluence2L(rs_cyl, rd_cyl, thk, en, optProp2, opts);
     
     elseif strcmp('CompReflectance', opts.Method)
-        rho = rs(1) - rd(1); % find a better way to do this 
+        rho = sqrt(sum((rs(1:2) - rd(1:2)).^2));
+        reflOpt.fmod = opts.fmod;
+        reflOpt.ni = optProp.nin(1);
+        reflOpt.no = optProp.nout;
+        reflOpt.B = opts.B;
+        reflOpt.h_end = opts.h_end;
         X(:,1) = optProp.mua(1);
         X(:,2) = optProp.mua(2);
         X(:,3) = optProp.musp(1);
         X(:,4) = optProp.musp(2); 
         X(:,5) = thk; 
-        PHI = R_2L_withPreCom(X, rho, opt); 
+        PHI = R_2L_withPreCom(X, rho, reflOpt);
         clear X
         X(:,1) = optProp1.mua(1);
         X(:,2) = optProp1.mua(2);
         X(:,3) = optProp1.musp(1);
         X(:,4) = optProp1.musp(2); 
         X(:,5) = thk; 
-        PHI1 = R_2L_withPreCom(X, rho, opt); 
+        PHI1 = R_2L_withPreCom(X, rho, reflOpt);
         clear X
         X(:,1) = optProp2.mua(1);
         X(:,2) = optProp2.mua(2);
         X(:,3) = optProp2.musp(1);
         X(:,4) = optProp2.musp(2); 
         X(:,5) = thk; 
-        PHI2 = R_2L_withPreCom(X, rho, opt); 
+        PHI2 = R_2L_withPreCom(X, rho, reflOpt);
     end 
     Ll(:, 1)=-(PHI1-PHI)./(PHI*dmua);
     Ll(:, 2)=-(PHI2-PHI)./(PHI*dmua);

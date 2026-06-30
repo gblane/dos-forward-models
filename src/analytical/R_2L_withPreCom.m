@@ -28,7 +28,7 @@ function [R] = R_2L_withPreCom(X, rho, opt, preCom)
     c=2.99792458e11; %mm/sec (Speed of light)
     
     % Check for options
-    if nargin<=3
+    if nargin<3 || isempty(opt)
         ni=1.4;
         fmod=1.40625e8; %Hz
         B=300; %mm
@@ -37,8 +37,8 @@ function [R] = R_2L_withPreCom(X, rho, opt, preCom)
         fmod=opt.fmod; %Hz
         B=opt.B; %mm
     end
-    if nargin<=4
-        if nargin<=3
+    if nargin<4 || isempty(preCom)
+        if nargin<3 || isempty(opt)
             preCom=get_R2L_preCom(rho);
         else
             preCom=get_R2L_preCom(rho, opt);

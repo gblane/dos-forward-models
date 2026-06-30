@@ -3,7 +3,7 @@ function [l_Scat] = complexPartPathLen_Scat(rs, r, rd, V, omega, optProp)
 %
 % [l_Scat] = complexPartPathLen_Scat(rs, r, rd, V, omega, optProp)
 %
-% Written by Giles Blaney, Ph.D. Winter 2020
+% Written by Giles Blaney (Winter 2020; Ph.D. awarded May 2022)
 %
 % Inputs:
 %   rs      - Source coordinates [mm]

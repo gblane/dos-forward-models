@@ -15,6 +15,9 @@ function [l] = temporalVarPartPathLen(rs, r, rd, Vol, optProp, NVA)
 %
 % Outputs:
 %   l - Partial pathlength of variance [mm]
+%
+% Shared-repo dependencies:
+%   struct2pairs is provided by ../my-matlab.
     
     arguments
         rs (1,3) double; %mm
