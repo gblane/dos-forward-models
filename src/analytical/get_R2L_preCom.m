@@ -19,26 +19,26 @@ function [preCom] = get_R2L_preCom(rho, opt)
 %               en_pillar - 1 X 1 X h_end pillar of Bessel function zeros [-]
 %               Q         - 1 X numDist X h_end array of Bessel function of
 %                           1st kind values [-]
-    
-    if nargin<=1
-        no=1;
-        ni=1.4;
-        B=300; %mm
-        h_end=3000;
+
+    if nargin <= 1
+        no = 1;
+        ni = 1.4;
+        B = 300; % mm
+        h_end = 3000;
     else
-        no=opt.no;
-        ni=opt.ni;
-        B=opt.B; %mm
-        h_end=opt.h_end;
+        no = opt.no;
+        ni = opt.ni;
+        B = opt.B; % mm
+        h_end = opt.h_end;
     end
-    
-    en=zeroOrdBesselRoots(h_end);
-    en_pillar=reshape(en, 1, 1, length(en));
-    
-    Q=besselj(...
+
+    en = zeroOrdBesselRoots(h_end);
+    en_pillar = reshape(en, 1, 1, length(en));
+
+    Q = besselj(...
         0, rho.*en_pillar(1:h_end)/B)./(besselj(1, en_pillar(1:h_end))).^2;
-    
-    preCom.A=n2A(ni, no);
-    preCom.en_pillar=en_pillar(1:h_end);
-    preCom.Q=Q;
+
+    preCom.A = n2A(ni, no);
+    preCom.en_pillar = en_pillar(1:h_end);
+    preCom.Q = Q;
 end

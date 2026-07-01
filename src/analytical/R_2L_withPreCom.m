@@ -7,9 +7,9 @@ function [R] = R_2L_withPreCom(X, rho, opt, preCom)
 %
 % Inputs:
 %   X       - numPropSets X 5 matrix where:
-%               X(:, 1): Top layer absorption coefficient [1/mm] 
-%               X(:, 2): Bottom layer absorption coefficient [1/mm] 
-%               X(:, 3): Top layer reduced scattering coefficient [1/mm] 
+%               X(:, 1): Top layer absorption coefficient [1/mm]
+%               X(:, 2): Bottom layer absorption coefficient [1/mm]
+%               X(:, 3): Top layer reduced scattering coefficient [1/mm]
 %               X(:, 4): Bottom layer reduced scattering coefficient [1/mm]
 %               X(:, 5): Top layer thickness [mm]
 %   rho     - 1 X numDist vector of source-detector distances [mm]
@@ -23,57 +23,57 @@ function [R] = R_2L_withPreCom(X, rho, opt, preCom)
 %
 % Outputs:
 %   R       - numPropSets X numDist vector of complex reflectances [1/mm^2]
-    
+
     %% Setup
-    c=2.99792458e11; %mm/sec (Speed of light)
-    
+    c = 2.99792458e11; % mm/sec (Speed of light)
+
     % Check for options
-    if nargin<3 || isempty(opt)
-        ni=1.4;
-        fmod=1.40625e8; %Hz
-        B=300; %mm
+    if nargin < 3 || isempty(opt)
+        ni = 1.4;
+        fmod = 1.40625e8; % Hz
+        B = 300; % mm
     else
-        ni=opt.ni;
-        fmod=opt.fmod; %Hz
-        B=opt.B; %mm
+        ni = opt.ni;
+        fmod = opt.fmod; % Hz
+        B = opt.B; % mm
     end
-    if nargin<4 || isempty(preCom)
-        if nargin<3 || isempty(opt)
-            preCom=get_R2L_preCom(rho);
+    if nargin < 4 || isempty(preCom)
+        if nargin < 3 || isempty(opt)
+            preCom = get_R2L_preCom(rho);
         else
-            preCom=get_R2L_preCom(rho, opt);
+            preCom = get_R2L_preCom(rho, opt);
         end
     end
-    A=preCom.A;
-    en_pillar=preCom.en_pillar;
-    Q=preCom.Q;
-    
-    n1=ni;
-    n2=ni;
-    
+    A = preCom.A;
+    en_pillar = preCom.en_pillar;
+    Q = preCom.Q;
+
+    n1 = ni;
+    n2 = ni;
+
     % Parse X=[mua1, mua2, musp1, musp2, L]
-    mua1=X(:, 1); %1/mm
-    mua2=X(:, 2); %1/mm
-    musp1=X(:, 3); %1/mm
-    musp2=X(:, 4); %1/mm
-    L=X(:, 5); %mm
+    mua1 = X(:, 1); % 1/mm
+    mua2 = X(:, 2); % 1/mm
+    musp1 = X(:, 3); % 1/mm
+    musp2 = X(:, 4); % 1/mm
+    L = X(:, 5); % mm
     clear X;
-    
+
     % Calculate constants
-    nu=c/ni; %mm/sec (Photon velocity)
-    omega=2*pi*fmod; %rad/sec (Angular modulation frequency)
-    
+    nu = c/ni; % mm/sec (Photon velocity)
+    omega = 2*pi*fmod; % rad/sec (Angular modulation frequency)
+
     %% Evaluate Reflectance
-    D1=1./(3*musp1); %mm (Diffusion coefficient of first layer)
-    D2=1./(3*musp2); %mm (Diffusion coefficient of second layer)
-    z0=1./musp1; %mm (Transport mean free path)
+    D1 = 1./(3*musp1); % mm (Diffusion coefficient of first layer)
+    D2 = 1./(3*musp2); % mm (Diffusion coefficient of second layer)
+    z0 = 1./musp1; % mm (Transport mean free path)
 %     clear musp1 musp2;
-    
-    zb=2*A*D1; %mm
-    
-    al1=sqrt(mua1./D1+(en_pillar/B).^2+1i*omega./(D1*nu));
-    al2=sqrt(mua2./D2+(en_pillar/B).^2+1i*omega./(D2*nu));
-    
+
+    zb = 2*A*D1; % mm
+
+    al1 = sqrt(mua1./D1+(en_pillar/B).^2+1i*omega./(D1*nu));
+    al2 = sqrt(mua2./D2+(en_pillar/B).^2+1i*omega./(D2*nu));
+
 %     % Lay 1 Sol
 %     a1=exp(-al1.*zb);
 %     a2=n2^2*exp(al1*L);
@@ -86,55 +86,55 @@ function [R] = R_2L_withPreCom(X, rho, opt, preCom)
 %     f1=exp(-al1.*(zb+z0))./(2*al1.*D1);
 %     f2=n2^2*exp(-al1.*(L-z0))./(2*al1.*D1);
 %     f3=-1/2*exp(-al1.*(L-z0));
-% 
+%
 %     den=(a1.*b2.*c3 - a1.*b3.*c2 - a2.*b1.*c3 + a3.*b1.*c2);
-% 
+%
 %     A1=-(b1.*c2.*f3 - b1.*c3.*f2 + b2.*c3.*f1 - b3.*c2.*f1)./den;
 %     B1=(a1.*c2.*f3 - a1.*c3.*f2 + a2.*c3.*f1 - a3.*c2.*f1)./den;
 %     refl_1 =(D1.*al1.*(A1-B1+exp(-al1.*z0)./(2*D1.*al1))).*Q;
-%     refl_int=conj((1/(pi*B^2)*nansum(refl_1, 3))); 
+%     refl_int=conj((1/(pi*B^2)*nansum(refl_1, 3)));
 %     R_lay1=refl_int;
-    
+
     % Lay 2 Sol
-    a1=exp(-al1.*zb);
-    a2=n2^2*exp(al1.*L);
-    a3=al1.*D1.*exp(al1.*L);
-    b1=exp(al1.*zb);
-    b2=n2^2*exp(-al1.*L);
-    b3=-al1.*D1.*exp(-al1.*L);
-    c2=-n1^2*exp(-al2.*L);
-    c3=D2.*al2.*exp(-al2.*L);
-    f2=-n1^2*exp(al2.*(L-z0))./(2*al2.*D2);
-    f3=-1/2*exp(al2.*(L-z0));
+    a1 = exp(-al1.*zb);
+    a2 = n2^2*exp(al1.*L);
+    a3 = al1.*D1.*exp(al1.*L);
+    b1 = exp(al1.*zb);
+    b2 = n2^2*exp(-al1.*L);
+    b3 = -al1.*D1.*exp(-al1.*L);
+    c2 = -n1^2*exp(-al2.*L);
+    c3 = D2.*al2.*exp(-al2.*L);
+    f2 = -n1^2*exp(al2.*(L-z0))./(2*al2.*D2);
+    f3 = -1/2*exp(al2.*(L-z0));
 
-    den=(a1.*b2.*c3 - a1.*b3.*c2 - a2.*b1.*c3 + a3.*b1.*c2);
+    den = (a1.*b2.*c3 - a1.*b3.*c2 - a2.*b1.*c3 + a3.*b1.*c2);
 
-    A1=-(b1.*(c2.*f3 - c3.*f2))./den;
-    B1=(a1.*(c2.*f3 - c3.*f2))./den; 
+    A1 = -(b1.*(c2.*f3 - c3.*f2))./den;
+    B1 = (a1.*(c2.*f3 - c3.*f2))./den;
 
-    refl_2 =(D1.*al1.*(A1-B1)).*Q;%**
-    refl_int=conj((1/(pi*B^2)*nansum(refl_2, 3))); %**
-    R_lay2=refl_int;
-    
+    refl_2 = (D1.*al1.*(A1-B1)).*Q;% **
+    refl_int = conj((1/(pi*B^2)*nansum(refl_2, 3))); % **
+    R_lay2 = refl_int;
+
     % Lay 1 Sol
-    flux=((exp(-al1.*z0)+exp(-al1.*(z0+2*zb)))/2+...
+    flux = ((exp(-al1.*z0)+exp(-al1.*(z0+2*zb)))/2+...
         sinh(al1.*(z0+zb)).*cosh(al1.*zb)./exp(al1.*(L+zb)).*(D1.*al1-D2.*al2)./...
         (D1.*al1.*cosh(al1.*(L+zb))+D2.*al2.*sinh(al1.*(L+zb)))).*Q;
-    
-    R_lay1=conj(1/(pi*B^2)*nansum(flux, 3));
-    
-    R=R_lay1.*(z0<L)+R_lay2.*(z0>=L);
-    
+
+    R_lay1 = conj(1/(pi*B^2)*nansum(flux, 3));
+
+    R = R_lay1.*(z0 < L)+R_lay2.*(z0 >= L);
+
 %     a1=sqrt(mua1./D1+(en_pillar/B).^2+1i*omega./(D1*nu));
 %     a2=sqrt(mua2./D2+(en_pillar/B).^2+1i*omega./(D2*nu));
 % %     clear mua1 mua2;
-%     
+%
 %     flux=((exp(-a1.*z0)+exp(-a1.*(z0+2*zb)))/2+...
 %         sinh(a1.*(z0+zb)).*cosh(a1.*zb)./exp(a1.*(L+zb)).*(D1.*a1-D2.*a2)./...
 %         (D1.*a1.*cosh(a1.*(L+zb))+D2.*a2.*sinh(a1.*(L+zb)))).*Q;
-%     
+%
 %     flux(isnan(flux))=0;
-%     
+%
 % %     flux(isnan(flux))=0;
 %     R=conj(1/(pi*B^2)*sum(flux, 3));
 end
