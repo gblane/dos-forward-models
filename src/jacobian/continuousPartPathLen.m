@@ -23,6 +23,6 @@ function [l] = continuousPartPathLen(rs, r, rd, V, optProp)
 
         optProp struct = [];
     end
-    
-    l=complexPartPathLen(rs, r, rd, V, 0, optProp);
+
+    l = complexPartPathLen(rs, r, rd, V, 0, optProp);
 end

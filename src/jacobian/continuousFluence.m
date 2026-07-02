@@ -20,5 +20,5 @@ function [PHI] = continuousFluence(rs, rd, optProp)
         optProp struct = [];
     end
 
-    PHI=complexFluence(rs, rd, 0, optProp);
+    PHI = complexFluence(rs, rd, 0, optProp);
 end

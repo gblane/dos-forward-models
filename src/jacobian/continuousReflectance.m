@@ -20,5 +20,5 @@ function [R] = continuousReflectance(rs, rd, optProp)
         optProp struct = [];
     end
 
-    R=complexReflectance(rs, rd, 0, optProp);
+    R = complexReflectance(rs, rd, 0, optProp);
 end

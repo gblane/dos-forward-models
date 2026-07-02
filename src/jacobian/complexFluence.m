@@ -13,53 +13,53 @@ function [PHI] = complexFluence(rs, rd, omega, optProp)
 %
 % Outputs:
 %   PHI - Complex fluence [1/mm^2]
-    
+
     arguments
         rs (:,3) double;
         rd (:,3) double;
-        
+
         omega (1,1) double = [];
         optProp struct = [];
     end
-    
+
     if isempty(omega)
-        fmod=1.40625e8; %Hz
-        omega=2*pi*fmod; %rad/sec
+        fmod = 1.40625e8; % Hz
+        omega = 2*pi*fmod; % rad/sec
     end
-        
+
     if isempty(optProp)
         clear optProp;
-        
-        optProp.nin=1.4;
-        optProp.nout=1;
-        optProp.musp=1.2; %1/mm
-        optProp.mua=0.01; %1/mm
-        
+
+        optProp.nin = 1.4;
+        optProp.nout = 1;
+        optProp.musp = 1.2; % 1/mm
+        optProp.mua = 0.01; % 1/mm
+
         warning(['Default optical properties used, this may be inconsistent'...
             ' with the musp used for source depth']);
     end
-    
-    if size(rs, 1)>1 && size(rd, 1)>1
-        error('Can not use multiple sources and multiple detectors');
+
+    if size(rs, 1) > 1 && size(rd, 1) > 1
+        error("Can not use multiple sources and multiple detectors");
     end
-    
-    x0=rs(:, 1); %mm
-    y0=rs(:, 2); %mm
-    z0=rs(:, 3); %mm
 
-    c=2.99792458e11; %mm/sec
-    v=c/optProp.nin;
+    x0 = rs(:, 1); % mm
+    y0 = rs(:, 2); % mm
+    z0 = rs(:, 3); % mm
 
-    A=n2A(optProp.nin, optProp.nout);
-    D=1/(3*optProp.musp); %mm
-    zb=-2*A*D; %mm
+    c = 2.99792458e11; % mm/sec
+    v = c/optProp.nin;
 
-    mueff=sqrt(optProp.mua/D-1i*omega/(v*D)); %1/mm
+    A = n2A(optProp.nin, optProp.nout);
+    D = 1/(3*optProp.musp); % mm
+    zb = -2*A*D; % mm
 
-    rsp=[x0, y0, -z0+2*zb]; %mm
+    mueff = sqrt(optProp.mua/D-1i*omega/(v*D)); % 1/mm
 
-    r1=vecnorm(rd-rs, 2, 2);
-    r2=vecnorm(rd-rsp, 2, 2);
-    
-    PHI=(exp(-mueff.*r1)./r1-exp(-mueff.*r2)./r2)/(4*pi*D);
+    rsp = [x0, y0, -z0+2*zb]; % mm
+
+    r1 = vecnorm(rd-rs, 2, 2);
+    r2 = vecnorm(rd-rsp, 2, 2);
+
+    PHI = (exp(-mueff.*r1)./r1-exp(-mueff.*r2)./r2)/(4*pi*D);
 end

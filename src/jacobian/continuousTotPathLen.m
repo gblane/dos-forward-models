@@ -21,5 +21,5 @@ function [L, R] = continuousTotPathLen(rs, rd, optProp)
         optProp struct = [];
     end
 
-    [L, R]=complexTotPathLen(rs, rd, 0, optProp);
+    [L, R] = complexTotPathLen(rs, rd, 0, optProp);
 end
