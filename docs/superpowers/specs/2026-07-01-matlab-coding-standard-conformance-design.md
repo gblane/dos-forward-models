@@ -2,7 +2,38 @@
 
 Date: 2026-07-01
 Branch: `matlab-coding-standard`
-Status: approved (design), pending implementation plan
+Status: **implemented** (2026-07-02) — all 57 files conformed and verified
+
+## 0. Verification results (2026-07-02)
+
+All 57 `.m` files (`src/` 48 + `examples/` 9) conformed and committed. Final
+full-repo gate: **VERIFY_OK** — 24/24 regression-guarded functions bit-identical
+(`isequaln`) to the pristine baseline, **0 regressions, 0 new checkcode ids**.
+Formatting invariants repo-wide: 0 tabs, 0 trailing-whitespace lines, 0 lines
+> 120 chars. Static-only files (2L/Scat/Grad, `makeSenMaps*`, `makeS`,
+`monte-carlo/*`, all example scripts) additionally verified behavior-preserving
+by a normalized code-skeleton comparison (`verify/skeleton.py`: comments/
+whitespace stripped, quote delimiters unified → identical HEAD vs conformed).
+
+Notable decisions found during implementation:
+- `makeE` chromophore codes (`'OD'`/`'O'`/`'D'`/`'ODWL'`) and MCX `cfg` flags
+  (`'flux'`/`'p'`/`'cone'`/`'pencil'`) stay **char** (indexed/parsed
+  char-by-char); bracket char-concatenations `['a' x 'b']` / `warning([...])`
+  stay char (double quotes → string array = behavior change). The regression
+  harness caught an over-conversion of `makeE('ODWL')`.
+- Example scripts conformed via `verify/conform_quotes.py` (deterministic,
+  transpose/bracket/continuation-aware). Section-banner decoration in example
+  scripts was left as-authored (behavior-neutral; deviates from §5 "simplify
+  banners", kept for consistency across `examples/` and minimal churn).
+- Pre-existing checkcode warnings on static-only files (NANSUM/NANMEAN, AGROW,
+  CAXIS, NASGU, UNRCH) were left as-is — the gate is "no *new* warnings," and
+  these fixes (deprecated-fn renames, preallocation, dead-code removal) are
+  behavior-adjacent and not runtime-verifiable here. Recommended follow-ups.
+- Task 7 (`../my-matlab/CLAUDE.md` §2) was moot: that standard was restructured
+  into `../my-matlab/AGENTS.md`, whose examples already conform (no
+  `clear; home;`, no decorated banners).
+- `verify/` (MATLAB harness + `conform_quotes.py` + `skeleton.py`) is branch
+  tooling — keep or drop before merge.
 
 ## 1. Goal
 
