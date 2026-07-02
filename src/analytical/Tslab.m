@@ -21,14 +21,14 @@ function T = Tslab(rho, s, optProp, m_max)
 %
 %   Requires n2A (this repo, src/analytical) on the path.
     arguments (Input)
-        rho (1,1) double; %mm -- Source-detector distance
-        s (1,1) double; %mm -- Slab thickness
+        rho (1,1) double; % mm -- Source-detector distance
+        s (1,1) double; % mm -- Slab thickness
 
         optProp struct = [];
         m_max (1,1) double = 100;
     end
     arguments (Output)
-        T (1,1) double; %1/mm^2 -- Transmittance Green's function
+        T (1,1) double; % 1/mm^2 -- Transmittance Green's function
     end
 
     % Set default optical properties if none given
@@ -37,22 +37,22 @@ function T = Tslab(rho, s, optProp, m_max)
 
         optProp.nin = 1.4;
         optProp.nout = 1;
-        optProp.musp = 1.1; %1/mm
-        optProp.mua = 0.011; %1/mm
+        optProp.musp = 1.1; % 1/mm
+        optProp.mua = 0.011; % 1/mm
 
-        warning('Tslab:defaultOptProp', 'Default optical properties used');
+        warning("Tslab:defaultOptProp", "Default optical properties used");
     end
 
-    mua = optProp.mua; %1/mm
-    D = 1/(3*optProp.musp); %mm
+    mua = optProp.mua; % 1/mm
+    D = 1/(3*optProp.musp); % mm
 
-    zs = 1/optProp.musp; %mm
+    zs = 1/optProp.musp; % mm
     A = n2A(optProp.nin, optProp.nout);
-    ze = 2*A*D; %mm
+    ze = 2*A*D; % mm
 
     m = (-m_max:m_max).';
-    z1m = (1-2*m)*s - 4*m*ze - zs; %mm
-    z2m = (1-2*m)*s - (4*m-2)*ze + zs; %mm
+    z1m = (1-2*m)*s - 4*m*ze - zs; % mm
+    z2m = (1-2*m)*s - (4*m-2)*ze + zs; % mm
 
     T = (1/(4*pi)) * sum( ...
         z1m.*(rho^2+z1m.^2).^(-3/2) .* ...
@@ -61,6 +61,6 @@ function T = Tslab(rho, s, optProp, m_max)
         z2m.*(rho^2+z2m.^2).^(-3/2) .* ...
         (1+(mua*(rho^2+z2m.^2)/D).^(1/2)) .* ...
         exp(-(mua*(rho^2+z2m.^2)/D).^(1/2)) ...
-        ); %1/mm^2
+        ); % 1/mm^2
 
 end

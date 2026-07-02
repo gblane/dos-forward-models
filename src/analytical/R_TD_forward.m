@@ -13,26 +13,26 @@ function [R] = R_TD_forward(rho, mua, musp, t, v, z0)
 %   v       - Speed of light in medium [mm/sec]
 %   z0      - Iso-Source Depth [mm]
 %   Note: rho and t should have orthogonal dims
-% 
+%
 % Outputs:
 %   R       - Time-domain reflectance [1/(mm^2 sec)]
-    
-    if nargin<=3
-        t=(linspace(0, 5e-9, 1000)); %sec
+
+    if nargin <= 3
+        t = (linspace(0, 5e-9, 1000)); % sec
     end
-    if nargin<=4
-        c=2.99792458e11; %mm/sec
-        v=c/1.4;
+    if nargin <= 4
+        c = 2.99792458e11; % mm/sec
+        v = c/1.4;
     end
-    if nargin<=5
-        z0=1/musp;
+    if nargin <= 5
+        z0 = 1/musp;
     end
-    
-    R=((3*(musp+mua))/(4*pi*v))^(3/2)*...
+
+    R = ((3*(musp+mua))/(4*pi*v))^(3/2)*...
         (z0./(t.^(5/2))).*...
         exp(-(3*(musp+mua)*(z0.^2+rho.^2))./(4*v*t)-mua*v*t);
-    
-    R(t<=0)=0;
-    
+
+    R(t <= 0) = 0;
+
 end
 

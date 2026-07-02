@@ -15,29 +15,29 @@ function [Splane, plotParams] = sliceS(S, params, slAxis, slValue)
 %   Splane     - 2D sliced sensitivity array [unitless]
 %   plotParams - Plotting parameters and axis vectors [struct]
 
-    slAxis=lower(slAxis);
-    [~, ind]=min(abs(params.(slAxis)-slValue));
+    slAxis = lower(slAxis);
+    [~, ind] = min(abs(params.(slAxis)-slValue));
 
     switch slAxis
-        case 'x'
-            Splane=squeeze(S(ind, :, :)).';
-            plotParams.vertAx=params.z;
-            plotParams.vertNm='$z$ (mm)';
-            plotParams.horzAx=params.y;
-            plotParams.horzNm='$y$ (mm)';
-        case 'y'
-            Splane=squeeze(S(:, ind, :)).';
-            plotParams.vertAx=params.z;
-            plotParams.vertNm='$z$ (mm)';
-            plotParams.horzAx=params.x;
-            plotParams.horzNm='$x$ (mm)';
-        case 'z'
-            Splane=S(:, :, ind).';
-            plotParams.vertAx=params.y;
-            plotParams.vertNm='$y$ (mm)';
-            plotParams.horzAx=params.x;
-            plotParams.horzNm='$x$ (mm)';
+        case "x"
+            Splane = squeeze(S(ind, :, :)).';
+            plotParams.vertAx = params.z;
+            plotParams.vertNm = "$z$ (mm)";
+            plotParams.horzAx = params.y;
+            plotParams.horzNm = "$y$ (mm)";
+        case "y"
+            Splane = squeeze(S(:, ind, :)).';
+            plotParams.vertAx = params.z;
+            plotParams.vertNm = "$z$ (mm)";
+            plotParams.horzAx = params.x;
+            plotParams.horzNm = "$x$ (mm)";
+        case "z"
+            Splane = S(:, :, ind).';
+            plotParams.vertAx = params.y;
+            plotParams.vertNm = "$y$ (mm)";
+            plotParams.horzAx = params.x;
+            plotParams.horzNm = "$x$ (mm)";
         otherwise
-            error('Unknown axis %s', slAxis);
+            error("Unknown axis %s", slAxis);
     end
 end

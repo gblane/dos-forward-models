@@ -19,8 +19,8 @@ function en = zeroOrdBesselRoots(nRoots)
         nRoots = 2000;
     end
     if nRoots < 1 || nRoots ~= fix(nRoots)
-        error('zeroOrdBesselRoots:InvalidNRoots', ...
-            'nRoots must be a positive integer.');
+        error("zeroOrdBesselRoots:InvalidNRoots", ...
+            "nRoots must be a positive integer.");
     end
 
     persistent cachedRoots
