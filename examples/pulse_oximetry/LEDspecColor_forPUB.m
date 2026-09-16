@@ -38,7 +38,7 @@ m_max = 100;
 % JBO, vol. 29, no. S3, p. S33311, Oct. 2024, 
 % doi: 10.1117/1.JBO.29.S3.S33311
 if useMCpathlen
-    MCavg = load('deps/MCout_avg.mat');
+    MCavg = load(fullfile('..','..','data','MCout_avg.mat'));
 end
 
 % Find indexes of the nominal RED and IR wavelengths
