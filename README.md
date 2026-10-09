@@ -37,6 +37,14 @@ before its local functions.
 `temporalVarPartPathLen` uses `struct2pairs` from `../my-matlab` when passing
 name-value arguments through to temporal moment helpers.
 
+## Third-Party Code
+
+`src/analytical/besselzero.m` is vendored unchanged from the MATLAB File
+Exchange submission 48403, "Bessel Zero Solver", by Jason Nicholson, after
+Greg von Winckel. It is distributed under the BSD 2-Clause
+license in `src/analytical/besselzero_license.txt`. `get_Rshpere_preCom`
+calls it for the Bessel zeros of the spherical model.
+
 ## Citations
 
 If you use this toolkit in your research, please cite the relevant publications:
